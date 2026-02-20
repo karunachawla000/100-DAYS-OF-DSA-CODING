@@ -1,23 +1,35 @@
-n = int(input())
+#include <stdio.h>
 
-matrix = []
+int main() {
+    int n;
+    scanf("%d", &n);
 
-for i in range(n):
-    row = list(map(int, input().split()))
-    matrix.append(row)
+    int matrix[n][n];
+    int is_identity = 1;
 
-is_identity = True
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            scanf("%d", &matrix[i][j]);
+        }
+    }
 
-for i in range(n):
-    for j in range(n):
-        if i == j:
-            if matrix[i][j] != 1:
-                is_identity = False
-        else:
-            if matrix[i][j] != 0:
-                is_identity = False
+    for(int i = 0; i < n; i++) {
+        for(int j = 0; j < n; j++) {
+            if(i == j) {
+                if(matrix[i][j] != 1)
+                    is_identity = 0;
+            }
+            else {
+                if(matrix[i][j] != 0)
+                    is_identity = 0;
+            }
+        }
+    }
 
-if is_identity:
-    print("Identity Matrix")
-else:
-    print("Not an Identity Matrix")
+    if(is_identity)
+        printf("Identity Matrix");
+    else
+        printf("Not an Identity Matrix");
+
+    return 0;
+}
